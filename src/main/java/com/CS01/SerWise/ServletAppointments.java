@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ServletViewAppointments", value = "/ServletViewAppointments")
-public class ServletViewAppointments extends HttpServlet {
+public class ServletAppointments extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out=response.getWriter();

@@ -17,7 +17,7 @@
   
   <servlet>
     <servlet-name>ViewAppointments</servlet-name>
-    <servlet-class>com.CS01.SerWise.ServletViewAppointments</servlet-class>
+    <servlet-class>com.CS01.SerWise.ServletAppointments</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewAppointments</servlet-name>
