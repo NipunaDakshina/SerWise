@@ -14,7 +14,6 @@ public class DatabaseConnection {
         String dbName = "serwise";
         String dbUsername = "root";
         String dbPassword = "";
-
         Class.forName(dbDriver);
         Connection con = DriverManager.getConnection(dbURL + dbName, dbUsername, dbPassword);
         return con;
