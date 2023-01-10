@@ -15,7 +15,7 @@
     <img src="../../Assets/SerWise.png" class="navimg">
     <table>
         <tr>
-            <td><a href="../Home/home.html ">Home</a></td>
+            <td><a href="../Home/home.jsp ">Home</a></td>
             <td><a href="../Appoinments/appointments.jsp">Appointments</a></td>
             <td><a href="../Reports/reports.html">Reports</a></td>
             <td><a href="../Inventory/inventory.html">Inventory</a></td>
@@ -33,6 +33,7 @@
         <div class="colomn-content-div">
             <div>
                 <form action="/SerWise_war/ViewAppoinments" >
+                    <input type="hidden" name="command" value="LIST">
                     <span class="title">View Appointments</span><br>
                     <span>Make an appointment to get the best services.
                         Make an appointment to get the best services</span><br>
@@ -42,6 +43,7 @@
             <div>
                 <form action="/SerWise_war/ViewAppoinments">
                     <span class="title">Reshedule Appointments</span><br>
+                    <input type="hidden" name="command" value="UPDATE">
                     <span>View your appointments here to keep track.
                             View your appointments here to keep track.</span><br>
                     <input type="submit" value="Reshedule" class="button">

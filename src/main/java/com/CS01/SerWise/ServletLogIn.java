@@ -40,7 +40,12 @@ public class ServletLogIn extends HttpServlet {
 
             if(uname.equals(dbUser) && password.equals(dbPass)){
                     if(dbRole==5) {
-                        response.sendRedirect("/SerWise_war/BranchManager/Home/home.html");
+                        //below code is used for get the branch details related to branch manager and set them in a request
+                        sql="SELECT * FROM serwise.branch_manager where ";
+
+
+
+                        response.sendRedirect("/SerWise_war/BranchManager/Home/home.jsp");
                     }
             }
             else {
