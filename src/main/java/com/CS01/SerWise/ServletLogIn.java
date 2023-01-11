@@ -26,26 +26,37 @@ public class ServletLogIn extends HttpServlet {
         try {
             con=DatabaseConnection.initializeDatabase();
 
-            String sql="select * from serwise.user where id='"+uname+"'";
+            String sql1="select * from serwise.user where username='"+uname+"'";
 
 
             stmt= con.createStatement();
 
-            rs=stmt.executeQuery(sql);
+            rs=stmt.executeQuery(sql1);
 
             rs.next();
-            String dbUser=rs.getString("id");
+            String dbUser=rs.getString("username");
             String dbPass=rs.getString("password");
             int dbRole=Integer.parseInt(rs.getString("role"));
 
             if(uname.equals(dbUser) && password.equals(dbPass)){
                     if(dbRole==5) {
                         //below code is used for get the branch details related to branch manager and set them in a request
-                        sql="SELECT * FROM serwise.branch_manager where ";
+                        try {
 
 
-
-                        response.sendRedirect("/SerWise_war/BranchManager/Home/home.jsp");
+                            String sql2 = "SELECT * FROM serwise.employee where username='" + uname + "'";
+                            stmt=con.createStatement();
+                            rs=stmt.executeQuery(sql2);
+                            rs.next();
+                            int branchId=rs.getInt("Branch_Id");
+                            int employeeId=rs.getInt("Employee_Id");
+                            HttpSession session=request.getSession();
+                            session.setAttribute("employeeId",employeeId);
+                            session.setAttribute("branchId",branchId);
+                            response.sendRedirect("/SerWise_war/BranchManager/Home/home.jsp");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
             }
             else {

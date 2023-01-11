@@ -38,60 +38,36 @@
                 <th>Client Id</th>
                 <th>Branch Id</th>
                 <th>Vehicle Id</th>
-                <th>Action</th>
             </tr>
             <tbody>
-              <%
-                  ResultSet rs=(ResultSet) request.getAttribute("rs");
+                    <%
+                  //ResultSet rs=(ResultSet) request.getAttribute("rs");
+
                   List<Appoinmtent> appoinmtents=new ArrayList<>();
-                  while(rs.next()) {
-                      int appoinmentId = rs.getInt("Appoinment_Id");
-                      String date = rs.getString("Date");
-                      String time = rs.getString("Time");
-                      String description = rs.getString("Desription");
-                      int clientId = rs.getInt("Registered_Client_Id");
-                      int branchId = rs.getInt("Branch_Id");
-                      int vehicleId = rs.getInt("Vehicle_Id");
+                  appoinmtents= (List<Appoinmtent>) request.getAttribute("APPOINMENTS");
 
-                      Appoinmtent theAppoinmtent = new Appoinmtent(appoinmentId, date, time, description, clientId, branchId, vehicleId);
+                  for(Appoinmtent theAppoinmtent : appoinmtents) {
+                      int appoinmentId =theAppoinmtent.getAppointmentId();
+                      String date = theAppoinmtent.getDate();
+                      String time = theAppoinmtent.getTime();
+                      String description = theAppoinmtent.getDescription();
+                      int clientId = theAppoinmtent.getClientId();
+                      int branchId = theAppoinmtent.getBranchId();
+                      int vehicleId = theAppoinmtent.getVehicleId();
+
+                      //Appoinmtent tempAppoinmtent = new Appoinmtent(appoinmentId, date, time, description, clientId, branchId, vehicleId);
                       //out.println(theAppoinmtent.toString());
-                      appoinmtents.add(theAppoinmtent);
-                      out.println("<tr>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getAppointmentId());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getDate());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getTime());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getDescription());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getClientId());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getBranchId());
-                      out.println("</td>");
-                      out.println("<td>");
-                      out.println(theAppoinmtent.getVehicleId());
-                      out.println("</td>");
-                      out.println("<td>");
-
-                      out.println(" <form action=\"../../SerWise_war/ServletViewAppointments\"  >\n" +
-                              "                            <input type=\"hidden\" name=\"command\" value=\"UPDATE\">");
-
-                      out.println("<input type=\"hidden\" name=\"appointmentId\" value="+theAppoinmtent.getAppointmentId()+">");
-
-                     out.println("<input type=\"submit\" value=\"Reshedule\" onclick=\"if(!(confirm('Are you sure you want to update this Appoinmetnt ?'))) return false\" class=\"button\">");
-
-                      out.println("</td>");
-                      out.println("</tr>");
-
-                  }
-              %>
+                    %>
+                    <tr>
+                        <td><%= appoinmentId %></td>
+                        <td><%= date %></td>
+                        <td><%= time %></td>
+                        <td><%= description %></td>
+                        <td><%= clientId %></td>
+                        <td><%= branchId %></td>
+                        <td><%= vehicleId %></td>
+                    </tr>
+               <%  } %>
 
             </tbody>
         </table>
