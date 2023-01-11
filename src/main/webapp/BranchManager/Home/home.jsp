@@ -1,5 +1,4 @@
 <%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.CS01.SerWise.DatabaseConnection" %>
 <!DOCTYPE html>
@@ -27,7 +26,16 @@
     </tr>
   </table>
 </header>
+<%
+  //this section is used for defining session store for banch manager details
+  int employeeId=(Integer)session.getAttribute("employeeId");
+  int branchId=(Integer) session.getAttribute("branchId");
+  //out.println(employeeId);
+  //out.println(branchId);
 
+
+
+%>
 <div class="two-content-div">
   <div>
     <span class="title">SerWise</span><br>
@@ -35,15 +43,6 @@
   </div>
 </div>
 
-
-<%
-    //this section is used for defining session store for banch manager details
-
-
-
-
-
-%>
 
 <footer class="footer">
   <div class="center"><img src="../../Assets/SerWise.png" class="logo"></div>
