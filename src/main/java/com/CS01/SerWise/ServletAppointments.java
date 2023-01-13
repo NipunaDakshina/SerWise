@@ -27,17 +27,10 @@ public class ServletAppointments extends HttpServlet {
         int employee_Id=(Integer)session.getAttribute("employeeId");
         int branch_Id=(Integer) session.getAttribute("branchId");
         PrintWriter out=response.getWriter();
-        String theCommand=request.getParameter("command");
+        String theCommand =(String) request.getParameter("command");
         //out.println(theCommand);
         //out.println(employeeId);
         //out.println(branchId);
-        String filterDate=null;
-        filterDate=request.getParameter("DATE");
-        int filterId=0;
-        filterId=Integer.parseInt(request.getParameter("ID"));
-
-
-
 
 
         if(theCommand.equals("LIST")){
@@ -114,25 +107,44 @@ public class ServletAppointments extends HttpServlet {
 
         }
 
-        else if(filterDate!=null || filterId!=0){
+        String filterDate=null;
+        filterDate=request.getParameter("DATE");
+        String Id=null;
+        Id=request.getParameter("ID");
+        int filterId=0;
+        if(Id==""){
+            filterId=0;
+        }
+        else{
+            filterId=Integer.parseInt(Id);
+        }
+
+        if(theCommand.equals("SEARCH")){
             List<Appoinmtent> appoinmtents=new ArrayList<>();
             Connection connection=null;
             Statement statement=null;
             ResultSet resultSet=null;
             String sql=null;
+            //out.println(theCommand);
+            //out.println(filterId);
+            //out.println(filterDate);
             try {
                 connection = DatabaseConnection.initializeDatabase();
 
 
-                if (filterDate != null && filterId ==0) {
-                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Date='"+filterDate+"'";
+                if (filterDate !="" && filterId ==0) {
+                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Date='"+filterDate+"';";
                 }
-                if (filterDate == null && filterId !=0) {
-                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Appoinment_Id='"+filterId+"'";
+                else if (filterDate =="" && filterId !=0) {
+                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Appoinment_Id="+filterId+";";
                 }
-                if (filterDate != null && filterId !=0) {
-                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Date='"+filterDate+"' AND Appoinment_ID='"+filterId+"'";
+                else if (filterDate != "" && filterId !=0) {
+                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "' AND Date='"+filterDate+"' AND Appoinment_Id="+filterId+";";
                 }
+                else{
+                    sql = "SELECT * FROM serwise.appoinment where Branch_Id='" + branch_Id + "'";
+                }
+                out.println(sql);
                 statement = connection.createStatement();
                 resultSet = statement.executeQuery(sql);
                 while (resultSet.next()){
@@ -145,6 +157,7 @@ public class ServletAppointments extends HttpServlet {
                     int vehicleId=resultSet.getInt("Vehicle_Id");
                     Appoinmtent tempAppoinmtent=new Appoinmtent(appoinmentId,date,time,description,clientId,branchId,vehicleId);
                     appoinmtents.add(tempAppoinmtent);
+                    //out.println(tempAppoinmtent);
                 }
 
                 request.setAttribute("APPOINMENTS",appoinmtents);
@@ -155,6 +168,9 @@ public class ServletAppointments extends HttpServlet {
                 throw new RuntimeException(e);
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
+            }
+            finally {
+                close(connection,statement,resultSet);
             }
         }
 
