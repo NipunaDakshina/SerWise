@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/SerWise_war/CSS/content.css">
     <link rel="stylesheet" href="/SerWise_war/CSS/navigation.css">
     <link rel="stylesheet" href="/SerWise_war/CSS/footer.css">
-    <link rel="stylesheet" href="/SerWise_war/CSS/backgrount.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/background.css">
     <title>Document</title>
 </head>
 <body>

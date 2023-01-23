@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../CSS/content.css">
   <link rel="stylesheet" href="../../CSS/navigation.css">
   <link rel="stylesheet" href="../../CSS/footer.css">
-  <link rel="stylesheet" href="../../CSS/backgrount.css">
+  <link rel="stylesheet" href="../../CSS/background.css">
   <title>Document</title>
 </head>
 <body>
