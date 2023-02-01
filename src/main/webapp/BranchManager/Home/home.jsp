@@ -22,7 +22,7 @@
       <td><a href="../Appoinments/appointments.jsp">Appointments</a></td>
       <td><a href="../Reports/reports.html">Reports</a></td>
       <td><a href="../Inventory/inventory.html">Inventory</a></td>
-      <td><a href="../Login/login.html"><button class="button">Logout</button></a></td>
+      <td><a href="../../Login/login.html"><button class="button">Logout</button></a></td>
     </tr>
   </table>
 </header>

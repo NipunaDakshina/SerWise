@@ -28,8 +28,24 @@
 
 <div class="two-content-div">
     <div>
-        <span class="title">SerWise</span><br>
-        <span>Slot Leader Current Job Page</span>
+
+    </div>
+    <div>
+        <form>
+            <div>
+                <label>Slot Number </label><input type="number">
+            </div><br>
+            <div>
+                <label>Slot Leader ID :</label><input type="number" >
+            </div><br>
+            <div>
+                <label>Vehicle ID :</label><input type="text">
+            </div><br>
+            <div>
+                <label>Job Type : </label> <input type="text">
+            </div><br>
+            <input type="submit" value="Confirm Job"><br>
+        </form>
     </div>
 </div>
 

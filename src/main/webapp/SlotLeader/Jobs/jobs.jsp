@@ -27,8 +27,24 @@
 </header>
 <div class="two-content-div">
     <div>
-        <span class="title">SerWise</span><br>
-        <span>Slot Leader Jobs Page</span>
+        <label>Search by ID : </label><input type="number" name="searchId">
+        <br><button>Search</button>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>Appointment ID</th>
+                <th>Date</th>
+                <th>Time</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nothing</td>
+                    <td>Nothing</td>
+                    <td>Nothing</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
