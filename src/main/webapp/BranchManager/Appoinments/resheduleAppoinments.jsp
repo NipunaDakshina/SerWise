@@ -50,6 +50,7 @@
                 <th>Client Id</th>
                 <th>Branch Id</th>
                 <th>Vehicle Id</th>
+                <td>Reshedule</td>
             </tr>
             <tbody>
             <%

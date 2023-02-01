@@ -58,6 +58,25 @@ public class ServletLogIn extends HttpServlet {
                             throw new RuntimeException(e);
                         }
                     }
+                    else if(dbRole==6){
+                        try {
+                                String sql2 = "SELECT * FROM serwise.employee where username='" + uname + "'";
+                                stmt=con.createStatement();
+                                rs=stmt.executeQuery(sql2);
+                                rs.next();
+                                int branchId=rs.getInt("Branch_Id");
+                                int employeeId=rs.getInt("Employee_Id");
+                                HttpSession session=request.getSession();
+                                session.setAttribute("employeeId",employeeId);
+                                session.setAttribute("branchId",branchId);
+                                response.sendRedirect("/SerWise_war/SlotLeader/Home/home.jsp");
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                        }
+
+
+
+                    }
             }
             else {
                 //out.println(uname);
