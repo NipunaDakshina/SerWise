@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../CSS/navigation.css">
   <link rel="stylesheet" href="../../CSS/footer.css">
   <link rel="stylesheet" href="../../CSS/background.css">
-  <link rel="stylesheet" href="../../CSS/Style/grid.css">
+  <link rel="stylesheet" href="../../CSS/Style/content.css">
   <title>Document</title>
 </head>
 <body>
@@ -41,9 +41,7 @@
   <div class="div-content-1">1</div>
   <div class="div-content-2">2</div>
   <div class="div-content-3">3</div>
-  <div class="div-content-4">
-    <img src="../../Assets/img/img-2.jpg">
-  </div>
+  <div class="div-content-4">4</div>
 </div>
 
 
