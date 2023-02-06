@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../CSS/navigation.css">
   <link rel="stylesheet" href="../../CSS/footer.css">
   <link rel="stylesheet" href="../../CSS/background.css">
+  <link rel="stylesheet" href="../../CSS/Style/grid.css">
   <title>Document</title>
 </head>
 <body>
@@ -36,10 +37,12 @@
 
 
 %>
-<div class="two-content-div">
-  <div>
-    <span class="title">SerWise</span><br>
-    <span>Branch manager home page</span>
+<div class="grid-content">
+  <div class="div-content-1">1</div>
+  <div class="div-content-2">2</div>
+  <div class="div-content-3">3</div>
+  <div class="div-content-4">
+    <img src="../../Assets/img/img-2.jpg">
   </div>
 </div>
 
