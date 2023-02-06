@@ -1,0 +1,22 @@
+.grid-content{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background-color: mediumslateblue;
+    width: 100%;
+    gap: 0;
+}
+ .grid-content > div{
+     background-color: blueviolet;
+     text-align: center;
+     font-size: 45px;
+ }
+ .div-content-4{
+     grid-column-start: 2;
+     grid-row-start: 1;
+     grid-row-end: 4;
+ }
+ .div-content-4 img {
+     width: 100%;
+     height: auto;
+     object-fit: cover;
+ }
