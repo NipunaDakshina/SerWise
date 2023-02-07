@@ -1,6 +1,9 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.CS01.SerWise.DatabaseConnection" %>
+<%@ page import="com.CS01.SerWise.Job" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,24 +30,13 @@
 </header>
 <div class="two-content-div">
     <div>
-        <label>Search by ID : </label><input type="number" name="searchId">
-        <br><button>Search</button>
-    </div>
-    <div>
-        <table>
-            <thead>
-                <th>Appointment ID</th>
-                <th>Date</th>
-                <th>Time</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nothing</td>
-                    <td>Nothing</td>
-                    <td>Nothing</td>
-                </tr>
-            </tbody>
-        </table>
+        <form action="/SerWise_war/ViewJobs">
+            <input type="hidden" name="command" value="VIEWJOBS">
+            <h2>View All Jobs Related to Branhc</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                <br>Ad amet dolores ducimus eveniet impedit ipsam ipsum</p>
+            <input type="submit" name="View" class="button">
+        </form>
     </div>
 </div>
 

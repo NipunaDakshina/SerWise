@@ -28,18 +28,21 @@
 
 <div class="two-content-div">
     <div>
+
+    </div>
+    <div>
         <form>
             <div>
-                <label>Slot Number </label><input type="number" value="0012">
+                <label>Slot Number </label><input type="number">
             </div><br>
             <div>
-                <label>Slot Leader ID :</label><input type="number" value="778899" >
+                <label>Slot Leader ID :</label><input type="number" >
             </div><br>
             <div>
-                <label>Vehicle ID :</label><input type="text" value="445566">
+                <label>Vehicle ID :</label><input type="text">
             </div><br>
             <div>
-                <label>Job Type : </label> <input type="text" value="Lublicant Service">
+                <label>Job Type : </label> <input type="text">
             </div><br>
             <input type="submit" value="Confirm Job"><br>
         </form>

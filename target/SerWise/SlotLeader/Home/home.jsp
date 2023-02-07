@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../CSS/navigation.css">
     <link rel="stylesheet" href="../../CSS/footer.css">
     <link rel="stylesheet" href="../../CSS/background.css">
-    <link rel="stylesheet" href="../../CSS/Style/content.css">
     <title>Document</title>
 </head>
 <body>
@@ -26,18 +25,23 @@
         </tr>
     </table>
 </header>
-<div>
-    <div class="container">
-        <img src="../../Assets/img/img-1.jpg" class="header-image" alt="header image">
-        <p class="header-text"> Hello, Slot Leader</p>
-        <p class="content-text">
-                Pursue your passions with determination
-            <br>and never give up on your dreams.
-            <br></br>Remember, the only limit to
-            <br>your success is the amount of work
-            <br></br>you're willing to put in.
-            <br>So dream big, work hard,
-            <br>and make it happen</p>
+<%
+    //this section is used for defining session store for banch manager details
+    int employeeId=(Integer)session.getAttribute("employeeId");
+    int branchId=(Integer) session.getAttribute("branchId");
+    //out.println(employeeId);
+    out.println(branchId);
+
+
+
+%>
+
+
+
+<div class="two-content-div">
+    <div>
+        <span class="title">SerWise</span><br>
+        <span>Slot Leader home page</span>
     </div>
 </div>
 
