@@ -26,29 +26,22 @@
     </table>
 </header>
 
+<body>
 <div class="two-content-div">
     <div>
-
-    </div>
-    <div>
-        <form>
-            <div>
-                <label>Slot Number </label><input type="number">
-            </div><br>
-            <div>
-                <label>Slot Leader ID :</label><input type="number" >
-            </div><br>
-            <div>
-                <label>Vehicle ID :</label><input type="text">
-            </div><br>
-            <div>
-                <label>Job Type : </label> <input type="text">
-            </div><br>
-            <input type="submit" value="Confirm Job"><br>
+        <form action="/SerWise_war/ViewJobs">
+            <input type="hidden" name="command" value="VIEWCURRENTJOB">
+            <h2>View All Jobs Related to Branhc</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                <br>Ad amet dolores ducimus eveniet impedit ipsam ipsum</p>
+            <input type="submit" name="View" class="button">
         </form>
     </div>
 </div>
 
+
+
+</body>
 
 <footer class="footer">
     <div class="center"><img src="../../Assets/SerWise.png" class="logo"></div>

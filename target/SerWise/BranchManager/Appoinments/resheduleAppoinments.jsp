@@ -32,12 +32,12 @@
         <input type="hidden" name="command" value="SEARCH">
         <div>
             <label>Search by Id : </label><input type="number" name="ID" placeholder="Appoinment ID">
-            <input type="submit" value="Search">
+            <input type="submit" value="Search" class="button">
         </div>
         <br>
         <div>
             <label>Filter by Date :</label><input type="date" name="DATE" placeholder="Appoinment Date">
-            <input type="submit" value="Search">
+            <input type="submit" value="Search" class="button">
         </div>
     </form>
     <div class="form-display-table">
@@ -50,7 +50,7 @@
                 <th>Client Id</th>
                 <th>Branch Id</th>
                 <th>Vehicle Id</th>
-                <td>Reshedule</td>
+                <th>Reshedule</th>
             </tr>
             <tbody>
             <%
@@ -79,6 +79,7 @@
                 <td><%= clientId %></td>
                 <td><%= branchId %></td>
                 <td><%= vehicleId %></td>
+                <td><button class="button">Reshedule</button></td>
             </tr>
             <%  } %>
 

@@ -40,7 +40,7 @@ public class ServletJobs extends HttpServlet {
                     String time=resultSet.getString("Time");
                     Job tempJob=new Job(appoinmentId,date,time);
                     jobs.add(tempJob);
-                    out.println(tempJob.toString());
+                    //out.println(tempJob.toString());
                 }
                 //this is for testing the job view page
                 Job testJOb=new Job(335577,"2023-02-07","9:45 a.m.");
@@ -64,10 +64,41 @@ public class ServletJobs extends HttpServlet {
 
 
         if(theCommand.equals("VIEWCURRENTJOB")){
+            Connection connection=null;
+            Statement statement=null;
+            ResultSet resultSet=null;
+            try {
+                connection = DatabaseConnection.initializeDatabase();
+                String sql = "select * from serwise.appoinment " +
+                        "where hour(appoinment.time) between hour(current_time()) and hour(current_time())+1 limit 1; ";
+                statement = connection.createStatement();
+                resultSet = statement.executeQuery(sql);
+                resultSet.next();
+                    int appoinmentId=resultSet.getInt("Appoinment_Id");
+                    String date=resultSet.getString("Date");
+                    String time=resultSet.getString("Time");
+                    Job tempJob=new Job(appoinmentId,date,time);
+                    //out.println(tempJob.toString());
+
+                //this is for testing the job view page
+                Job testJOb=new Job(335577,"2023-02-07","9:45 a.m.");
+
+                request.setAttribute("CURRENTJOB",testJOb);
+                RequestDispatcher rd=request.getRequestDispatcher("SlotLeader/CurrentJob/viewCurrentJob.jsp");
+                rd.forward(request,response);
 
 
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } finally {
+                close(connection,statement,resultSet);
+            }
         }
+
     }
+
     private void close(Connection connection, Statement statement, ResultSet resultSet) {
         try {
             if(resultSet !=null){

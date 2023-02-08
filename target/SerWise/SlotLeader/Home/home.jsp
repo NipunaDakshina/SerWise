@@ -30,10 +30,7 @@
     int employeeId=(Integer)session.getAttribute("employeeId");
     int branchId=(Integer) session.getAttribute("branchId");
     //out.println(employeeId);
-    out.println(branchId);
-
-
-
+    //out.println(branchId);
 %>
 
 

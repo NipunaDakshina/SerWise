@@ -27,8 +27,22 @@
             </tr>
         </table>
     </header>
+<br><br><br>
+
+    <div class="single-content-div center title">
+        <span class="title">SerWice &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View Appointments</span>
+    </div>
+    <div class="single-content-div center title">
+        Search By Name : &MediumSpace;
+        <form>
+            <input type="text" placeholder="Item Name">
+            &MediumSpace;
+            <input type="submit" value="Search" class="button">
+        </form>
+    </div>
+
     <div class="two-content-div">
-        <div class="form-display-table">
+        <div class="form-display-table glass">
         <table>
             <tr>
                 <th>Appointment Id</th>
