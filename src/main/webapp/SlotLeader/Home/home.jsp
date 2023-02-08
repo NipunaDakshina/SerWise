@@ -35,10 +35,26 @@
 
 
 
-<div class="two-content-div">
+<div class="home-first-content">
     <div>
         <span class="title">SerWise</span><br>
-        <span>Slot Leader home page</span>
+        <span>We Care About Your Vehicle</span><br>
+    </div>
+</div>
+
+
+
+
+<div class="two-content-div glass">
+    <div>
+        <img src="../../Assets/HomeLastContentDiv.jpg" class="content-div-img">
+    </div>
+    <div>
+        <span class="title">Best service in Sri Lanka</span><br>
+        <span>Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+                 aut odit aut fugit, sed quia consequuntur magni dolores
+                  eos qui ratione voluptatem sequi nesciunt.
+                  Neque porro quisquam est, qui dolorem.</span>
     </div>
 </div>
 

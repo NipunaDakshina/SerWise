@@ -28,11 +28,15 @@
         </tr>
     </table>
 </header>
-<div class="two-content-div">
+<div class="two-content-div ">
     <div>
+        <span class="title">SerWise</span><br>
+        <span class="subtitle">Jobs</span>
+    </div>
+    <div class="colomn-content-div">
         <form action="/SerWise_war/ViewJobs">
             <input type="hidden" name="command" value="VIEWJOBS">
-            <h2>View All Jobs Related to Branhc</h2>
+            <h2 class="title">View All Jobs Related to Branch</h2>
             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 <br>Ad amet dolores ducimus eveniet impedit ipsam ipsum</p>
             <input type="submit" name="View" class="button">

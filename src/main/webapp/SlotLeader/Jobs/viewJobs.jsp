@@ -29,8 +29,22 @@
 </header>
 
 <body>
+
+<div class="single-content-div center title">
+    <span class="title">SerWice &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View All Jobs</span>
+</div>
+<div class="single-content-div center title">
+    Search By ID : &MediumSpace;
+    <form>
+        <input type="text" placeholder="Item Name">
+        &MediumSpace;
+        <input type="submit" value="Search" class="button">
+    </form>
+</div>
+
+
 <div class="single-content-div">
-    <div class="form-display-table">
+    <div class="form-display-table glass">
         <table>
             <thead>
                 <tr>

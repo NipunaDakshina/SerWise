@@ -30,25 +30,26 @@
 
 <body>
 
-<div class="two-content-div">
-  <div>
+<div class="single-content-div center title">
+  <span class="title">SerWice &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; Current Job Details</span>
+</div>
 
-  </div>
-  <div>
-    <form>
+<div class="two-content-div">
+  <div class="form-display-table glass">
+    <form >
       <div>
-        <label>Slot Number </label><input type="number">
+        <label>Slot Number </label><input type="number" value="012">
       </div><br>
       <div>
-        <label>Slot Leader ID :</label><input type="number" >
+        <label>Slot Leader ID :</label><input type="number" value="224466">
       </div><br>
       <div>
-        <label>Vehicle ID :</label><input type="text">
+        <label>Vehicle ID :</label><input type="text" value="ABX-3867">
       </div><br>
       <div>
-        <label>Job Type : </label> <input type="text">
+        <label>Job Type : </label> <input type="text" value="Hydrolic Repair">
       </div><br>
-      <input type="submit" value="Confirm Job"><br>
+      <input type="submit" value="Confirm Job" class="button"><br>
     </form>
   </div>
 </div>

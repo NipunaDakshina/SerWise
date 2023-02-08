@@ -28,18 +28,23 @@
     </table>
 </header>
 <div class="two-content-div">
+    <div class="single-content-div center title">
     <form action="/SerWise_war/ViewAppoinments" method="get">
         <input type="hidden" name="command" value="SEARCH">
         <div>
             <label>Search by Id : </label><input type="number" name="ID" placeholder="Appoinment ID">
             <input type="submit" value="Search" class="button">
         </div>
+
         <br>
         <div>
             <label>Filter by Date :</label><input type="date" name="DATE" placeholder="Appoinment Date">
             <input type="submit" value="Search" class="button">
         </div>
+
     </form>
+    </div>
+
     <div class="form-display-table">
         <table>
             <tr>
