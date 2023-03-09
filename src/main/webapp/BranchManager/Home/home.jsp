@@ -19,11 +19,19 @@
   <img src="../../Assets/SerWise.png" class="navimg" width="9375" height="8334">
   <table>
     <tr>
-      <td><a href="../Home/home.jsp ">Home</a></td>
-      <td><a href="../Appoinments/appointments.jsp">Appointments</a></td>
-      <td><a href="../Reports/reports.html">Reports</a></td>
-      <td><a href="../Inventory/inventory.html">Inventory</a></td>
-      <td><a href="../../Login/login.html"><button class="button">Logout</button></a></td>
+      <td><a href="../SerWise_war/Home/home.jsp">Home</a></td>
+
+        <td>
+          <a href="/SerWise_war/AppoinmentController?command=LIST">Appoinments</a>
+        </td>
+
+      <td><a href="../SerWise_war/Reports/reports.jsp">Reports</a></td>
+
+        <td>
+          <a href="/SerWise_war/InventoryController?command=LIST">Inventory</a>
+        </td>
+
+      <td><a href="../../SerWise_war/Login/login.html"><button class="button">Logout</button></a></td>
     </tr>
   </table>
 </header>
