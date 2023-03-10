@@ -41,18 +41,25 @@
 
         <div>
             <div class="colomn-content-div">
-                <div>
-                    <span class="title">View Current Month Status</span><br>
-                    <span>Make an appointment to get the best services.
-                        Make an appointment to get the best services</span><br>
-                    <a href="currentStatus.jsp"><button class="button">View Now</button></a>
-                </div>
-                <div>
-                    <span class="title">View Previous Reports</span><br>
-                    <span>View your appointments here to keep track.
-                        View your appointments here to keep track.</span><br>
-                    <a href="../Reports/viewPrevious.html"><button class="button">View Now</button></a>
-                </div>
+                <form action="/SerWise_war/ReportController">
+                    <input type="hidden" name="command" value="CURRENT">
+                    <div>
+                        <span class="title">View Current Month Status</span><br>
+                        <span>Make an appointment to get the best services.
+                            Make an appointment to get the best services</span><br>
+                        <input type="submit" class="button" value="View">
+                    </div>
+                </form>
+
+                <form action="/SerWise_war/ReportController">
+                    <input type="hidden" name="command" value="PREVIOUS">
+                    <div>
+                        <span class="title">View Previous Reports</span><br>
+                        <span>View your appointments here to keep track.
+                            View your appointments here to keep track.</span><br>
+                        <input type="submit" class="button" value="View">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

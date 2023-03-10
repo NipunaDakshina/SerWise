@@ -25,7 +25,7 @@
           <a href="/SerWise_war/AppoinmentController?command=LIST">Appoinments</a>
         </td>
 
-      <td><a href="../SerWise_war/Reports/reports.jsp">Reports</a></td>
+      <td><a href="/SerWise_war/BranchManager/Reports/reports.jsp">Reports</a></td>
 
         <td>
           <a href="/SerWise_war/InventoryController?command=LIST">Inventory</a>
