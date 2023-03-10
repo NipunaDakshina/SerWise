@@ -1,13 +1,16 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.CS01.SerWise.Inventory" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../CSS/content.css">
-    <link rel="stylesheet" href="../../CSS/navigation.css">
-    <link rel="stylesheet" href="../../CSS/footer.css">
-    <link rel="stylesheet" href="../../CSS/background.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/content.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/navigation.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/footer.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/background.css">
     <title>Document</title>
 </head>
 <body>
@@ -28,7 +31,7 @@
                     <a href="/SerWise_war/InventoryController?command=LIST">Inventory</a>
                 </td>
 
-                <td><a href="../../Login/login.html"><button class="button">Logout</button></a></td>
+                <td><a href="/SerWise_war/Login/login.html"><button class="button">Logout</button></a></td>
             </tr>
         </table>
     </header>
@@ -41,43 +44,56 @@
 
     <div class="single-content-div center title">
         Search By Name : &MediumSpace;
-        <form>
-            <input type="text" placeholder="Item Name">
-            &MediumSpace;
+        <form action="/SerWise_war/InventoryController">
+            <input type="hidden" name="command" value="SEARCH">
+            <input type="text" placeholder="Item Name" name="item_name">&MediumSpace;
             <input type="submit" value="Search" class="button">
         </form>
     </div>
 
-    <div class="form-display-table glass">
+    <div class="form-display-table glass ">
         <table>
             <tr>
                 <th>Item ID</th>
                 <th>Item Name</th>
-                <th>Measurement</th>
-                <th>Reordering Level</th>
-                <th>Price</th>
-                <th colspan="2">Manage Options</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Handling Time</th>
             </tr>
+            <tbody>
+                <%
+                    List<Inventory> inventory=new ArrayList<>();
+                    inventory=(List<Inventory>) request.getAttribute("INVENTORY");
+                    if (inventory.isEmpty()){
+                %>
+                    <tr>
+                        <td colspan="5">Nothing to show</td>
+                    </tr>
+                <%
+                    }
+                %>
 
-                       <tr>
-                            <td>001</td>
-                            <td>Plugs</td>
-                           <td>2</td>
-                           <td>5</td>
-                           <td>Rs. 700.00</td>
-                           <td><button class="button">Update</button></td>
-                           <td><button class="button">Remove</button></td>
-                       </tr>
+                <%
+                    if(!inventory.isEmpty()){
+                        for(Inventory theInventory:inventory){
+                            int itemId= theInventory.getItemId();
+                            String itemName= theInventory.getItemName();
+                            String handlingTime=theInventory.getHandlingDate();
+                            float quantity=theInventory.getQuantity();
+                            String description=theInventory.getDescription();
+                %>
 
-                        <tr>
-                            <td>002</td>
-                            <td>Cylinder</td>
-                            <td>3</td>
-                            <td>7</td>
-                            <td>Rs. 2900.00</td>
-                            <td><button class="button">Update</button></td>
-                            <td><button class="button">Remove</button></td>
-                        </tr>
+                <tr>
+                    <td><%=itemId%></td>
+                    <td><%=itemName%></td>
+                    <td><%=quantity%></td>
+                    <td><%=description%></td>
+                    <td><%=handlingTime%></td>
+                </tr>
+
+                <%  }
+                } %>
+            </tbody>
         </table>
     </div>
 

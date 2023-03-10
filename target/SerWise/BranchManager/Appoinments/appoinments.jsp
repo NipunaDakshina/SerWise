@@ -25,13 +25,13 @@
             <td><a href="/SerWise_war/BranchManager/Home/home.jsp">Home</a></td>
 
             <td>
-                <a href="/SerWise_war/BranchManager/AppoinmentController?command=LIST">Appoinments</a>
+                <a href="/SerWise_war/AppoinmentController?command=LIST">Appoinments</a>
             </td>
 
             <td><a href="/SerWise_war/BranchManager/Reports/reports.jsp">Reports</a></td>
 
             <td>
-                <a href="/SerWise_war/BranchManager/InventoryController?command=LIST">Inventory</a>
+                <a href="/SerWise_war/InventoryController?command=LIST">Inventory</a>
             </td>
 
             <td><a href="/SerWise_war/Login/login.html"><button class="button">Logout</button></a></td>
@@ -73,10 +73,21 @@
             <tbody>
             <%
                 //ResultSet rs=(ResultSet) request.getAttribute("rs");
-
                 List<Appoinmtent> appoinmtents=new ArrayList<>();
                 appoinmtents= (List<Appoinmtent>) request.getAttribute("APPOINMENTS");
+                if(appoinmtents.isEmpty()){
+            %>
 
+            <tr>
+                <td colspan="8">Nothing to show</td>
+            </tr>
+
+            <%
+                }
+            %>
+
+            <%
+                if(!appoinmtents.isEmpty()){
                 for(Appoinmtent theAppoinmtent : appoinmtents) {
                     int appoinmentId =theAppoinmtent.getAppointmentId();
                     String date = theAppoinmtent.getDate();
@@ -120,7 +131,8 @@
 
                 </td>
             </tr>
-            <%  } %>
+            <%  }
+            }  %>
 
             </tbody>
         </table>

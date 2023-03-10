@@ -34,7 +34,15 @@
     <servlet-name>AppoinmentController</servlet-name>
     <url-pattern>/AppoinmentController</url-pattern>
   </servlet-mapping>
-  
+
+  <servlet>
+    <servlet-name>InventoryController</servlet-name>
+    <servlet-class>com.CS01.SerWise.ServletInventoryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InventoryController</servlet-name>
+    <url-pattern>/InventoryController</url-pattern>
+  </servlet-mapping>
   
 
 
