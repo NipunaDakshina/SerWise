@@ -1,3 +1,4 @@
+<%@ page import="java.time.Month" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +54,7 @@
 
                 <form action="/SerWise_war/ReportController">
                     <input type="hidden" name="command" value="PREVIOUS">
+                    <input type="hidden" name="search_month" value="0">
                     <div>
                         <span class="title">View Previous Reports</span><br>
                         <span>View your appointments here to keep track.

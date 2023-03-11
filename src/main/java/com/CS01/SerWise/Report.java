@@ -1,14 +1,14 @@
 package com.CS01.SerWise;
 
 public class Report {
-    int branchId;
-    String month;
-    String year;
-    int appoinmentDone;
-    int appoinmentOngoing;
-    float income;
-    float profit;
-    int rank;
+    private int branchId;
+    private String month;
+    private String year;
+    private int appoinmentDone;
+    private int appoinmentOngoing;
+    private float income;
+    private float profit;
+    private int rank;
 
     public Report(int branchId, String month, String year, int appoinmentDone, float income, float profit, int rank) {
         this.branchId = branchId;

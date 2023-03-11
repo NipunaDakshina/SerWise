@@ -22,6 +22,47 @@
         </div>
     </div>
 
+    <div class="single-content-div center title">
+        select the month :
+        <form action="/SerWise_war/ReportController">
+
+            <select name="months">
+                <option value="">Select a month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+
+            select the year :
+
+            <label for="year-select">Select a year:</label>
+            <select id="year-select" name="year">
+                <option value="">Select a year</option>
+                <!-- Generate options with a loop -->
+                <script>
+                    var yearSelect = document.getElementById("year-select");
+                    for (var year = 2020; year <= 2025; year++) {
+                        var option = document.createElement("option");
+                        option.value = year;
+                        option.text = year;
+                        yearSelect.add(option);
+                    }
+                </script>
+            </select>
+
+            <input type="submit" value="Search" class="button">
+        </form>
+    </div>
+
     <div class="report-table glass">
         <table>
             <tr>
