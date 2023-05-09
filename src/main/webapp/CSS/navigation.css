@@ -16,12 +16,11 @@
 
 .navigation a:hover{
     font-weight: bolder;
-    color: #EE534F;
+    color: #9A3633;
 }
 
-
 .loginButton{
-    background-color: #EE534F;
+    background-color: #F06A66;
     color: #000000;
     border: 0px;
     width: 100%;
@@ -32,7 +31,7 @@
 
 .loginButton:hover{
     font-weight: bolder;
-    background-color: #EE534F;
+    background-color:#F06A66;
     color: #000000;
     border: 0px;
     width: 100%;

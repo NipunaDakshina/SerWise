@@ -15,42 +15,9 @@
   
   <display-name>Archetype Created Web Application</display-name>
 
-  <servlet>
-    <servlet-name>AppoinmentController</servlet-name>
-    <servlet-class>com.CS01.SerWise.ServletAppoinmentController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AppoinmentController</servlet-name>
-    <url-pattern>/AppoinmentController</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>InventoryController</servlet-name>
-    <servlet-class>com.CS01.SerWise.ServletInventoryController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InventoryController</servlet-name>
-    <url-pattern>/InventoryController</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ReportController</servlet-name>
-    <servlet-class>com.CS01.SerWise.ServletReportController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ReportController</servlet-name>
-    <url-pattern>/ReportController</url-pattern>
-  </servlet-mapping>
 
 
-  <servlet>
-    <servlet-name>ViewJobs</servlet-name>
-    <servlet-class>com.CS01.SerWise.ServletJobs</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewJobs</servlet-name>
-    <url-pattern>/ViewJobs</url-pattern>
-  </servlet-mapping>
+
   
 
 

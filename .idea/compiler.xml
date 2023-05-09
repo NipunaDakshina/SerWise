@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SerWise" />
+        <module name="SerWise - Copy (2) - Copy" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,92 +1,99 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.CS01.SerWise.DatabaseConnection" %>
-<%@ page import="com.CS01.SerWise.Job" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Nipuna
+  Date: 4/25/2023
+  Time: 6:16 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Nipuna
+  Date: 4/19/2023
+  Time: 10:46 AM
+  To change this template use File | Settings | File Templates.
+--%>
+
+<%@ page import="com.mysql.cj.Session" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../SerWise_war/CSS/content.css">
-    <link rel="stylesheet" href="../../SerWise_war/CSS/navigation.css">
-    <link rel="stylesheet" href="../../SerWise_war/CSS/footer.css">
-    <link rel="stylesheet" href="../../SerWise_war/CSS/background.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/content.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/navigation.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/footer.css">
+    <link rel="stylesheet" href="/SerWise_war/CSS/backgrount.css">
     <title>Document</title>
 </head>
-<header class="navigation">
-    <img src="../../SerWise_war/Assets/SerWise.png" class="navimg" width="9375" height="8334">
-    <table>
-        <tr>
-            <td><a href="../SerWise_war/SlotLeader/Home/home.jsp ">Home</a></td>
-            <td><a href="../SerWise_war/SlotLeader/Jobs/jobs.jsp">Jobs</a></td>
-            <td><a href="../SerWise_war/SlotLeader/CurrentJob/currentJob.jsp">Current Job</a></td>
-            <td><a href="../../SerWise_war/Login/login.html"><button class="button">Logout</button></a></td>
-        </tr>
-    </table>
-</header>
-
 <body>
 
+<header class="navigation"></header>
+
+
 <div class="single-content-div center title">
-    <span class="title">SerWice &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View All Jobs</span>
+    <span class="title">SerWise &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View Jobs</span>
 </div>
+
+
 <div class="single-content-div center title">
-    Search By ID : &MediumSpace;
-    <form>
-        <input type="text" placeholder="Item Name">
+
+    Search By id : &MediumSpace;
+    <form action="/SerWise_war/ServletsearchJob" >
+        <input type="text" placeholder="Job ID" name="id">
         &MediumSpace;
         <input type="submit" value="Search" class="button">
     </form>
 </div>
 
+<div class="form-display-table glass">
+    <table>
+        <tr>
+            <th>Job Id</th>
+            <th>Branch Id</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Slot</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Vehicle Id</th>
+        </tr>
+        <%
+            Integer attrVal = (Integer) request.getAttribute("noOfRows");
+            int noOfRows=attrVal.intValue();
+            int i = 0;
+            if(noOfRows !=0) {
+                while (i < noOfRows) {
+        %>
 
-<div class="single-content-div">
-    <div class="form-display-table glass">
-        <table>
-            <thead>
-                <tr>
-                    <th>Appoinment Id</th>
-                    <th>Time</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            <%
-                //ResultSet rs=(ResultSet) request.getAttribute("rs");
+        <tr>
+            <td><%= request.getAttribute("jobId" + i) %></td>
+            <td><%= request.getAttribute("branchId" + i) %></td>
+            <td><%= request.getAttribute("date" + i)%></td>
+            <td><%= request.getAttribute("time" + i) %></td>
+            <td><%= request.getAttribute("slot" + i) %></td>
+            <td><%= request.getAttribute("status" + i) %></td>
+            <td><%= request.getAttribute("total" + i)%></td>
+            <td><%= request.getAttribute("vehicleId" + i) %></td>
+        </tr>
 
-                List<Job> jobs=new ArrayList<>();
-                jobs= (List<Job>) request.getAttribute("JOBS");
-
-                for(Job theJob : jobs) {
-                    int appoinmentId =theJob.getAppointmentId();
-                    String date = theJob.getDate();
-                    String time = theJob.getTime();
-
-                    //Appoinmtent tempAppoinmtent = new Appoinmtent(appoinmentId, date, time, description, clientId, branchId, vehicleId);
-                    //out.println(theAppoinmtent.toString());
-            %>
-            <tr>
-                <td><%= appoinmentId %></td>
-                <td><%= date %></td>
-                <td><%= time %></td>
-            </tr>
-            <%  } %>
-
-            </tbody>
-        </table>
-    </div>
+        <%
+                    i++;
+                }
+            }else{
+                out.println("<tr> <td colspan=\"8\">Not Found!</td></tr>");
+            }
+        %>
+    </table>
 </div>
 
-</body>
 <footer class="footer">
-    <div class="center"><img src="../../SerWise_war/Assets/SerWise.png" class="logo"></div>
+    <div class="center"><img src="/SerWise_war/Assets/SerWise.png" class="logo"></div>
     <div class="center"><a href="#"> Contact Us </a> &nbsp|
         &nbsp<a href="#"> About Us </a> &nbsp|
         &nbsp <a href="#"> Legal Stuff </a></div>
     <div class="center">All Rights Recieved</div>
 </footer>
+<script src="/SerWise_war/SlotLeader/SlotLeaderHeader.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class ServletLogIn extends HttpServlet {
         try {
             con=DatabaseConnection.initializeDatabase();
 
-            String sql1="select * from serwise.user where username='"+uname+"'";
+            String sql1="select * from serwise.user where uname='"+uname+"'";
 
 
             stmt= con.createStatement();
@@ -34,7 +34,7 @@ public class ServletLogIn extends HttpServlet {
             rs=stmt.executeQuery(sql1);
 
             rs.next();
-            String dbUser=rs.getString("username");
+            String dbUser=rs.getString("uname");
             String dbPass=rs.getString("password");
             int dbRole=Integer.parseInt(rs.getString("role"));
 
@@ -44,7 +44,7 @@ public class ServletLogIn extends HttpServlet {
                         try {
 
 
-                            String sql2 = "SELECT * FROM serwise.employee where username='" + uname + "'";
+                            String sql2 = "SELECT * FROM serwise.employee where Email='" + uname + "'";
                             stmt=con.createStatement();
                             rs=stmt.executeQuery(sql2);
                             rs.next();
@@ -60,7 +60,7 @@ public class ServletLogIn extends HttpServlet {
                     }
                     else if(dbRole==6){
                         try {
-                                String sql2 = "SELECT * FROM serwise.employee where username='" + uname + "'";
+                                String sql2 = "SELECT * FROM serwise.employee where Email='" + uname + "'";
                                 stmt=con.createStatement();
                                 rs=stmt.executeQuery(sql2);
                                 rs.next();
