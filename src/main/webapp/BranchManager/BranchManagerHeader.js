@@ -9,7 +9,7 @@ const innerText = "<img src=\"/SerWise_war/Assets/SerWise.png\" class=\"navimg\"
     "        <td><a href=\"/SerWise_war/BranchManager/Report/viewReport.jsp\">Report</a></td>\n" +
     "        <td><a href=\"/SerWise_war/ServletlistInventoryList\">Inventory</a></td>\n" +
     "        <td><a href=\"/SerWise_war//ServletemployeeList\">Employee</a></td>\n" +
-    "        <td><a href='/SerWise_war//ServletLogout'><button class=\"button\">Logout</button></a></td>\n" +
+    "        <td><a href='/SerWise_war/Login/login.html'><button class=\"button\">Logout</button></a></td>\n" +
     "        <td><a href=\"#\"><img src=\"/SerWise_war/Assets/ProfilePic.jpg\" class=\"profile\"></a></td>\n" +
     "    </tr>\n" +
     "</table>";

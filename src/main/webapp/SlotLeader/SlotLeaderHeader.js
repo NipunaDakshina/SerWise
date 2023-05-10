@@ -6,7 +6,7 @@ const innerText = "<img src=\"/SerWise_war/Assets/SerWise.png\" class=\"navimg\"
     "        <td><a href=\"/SerWise_war/SlotLeader/Home/home.jsp\" class=\"nava\">Home</a></td>\n" +
     "        <td><a href=\"/SerWise_war/ServletlistJobs\">Jobs</a></td>\n" +
     "        <td><a href=\"/SerWise_war/ServletviewCurrentJob\">Current Job</a></td>\n" +
-    "        <td><a href='/SerWise_war//ServletLogout'><button class=\"button\">Logout</button></a></td>\n" +
+    "        <td><a href='/SerWise_war/Login/login.html'><button class=\"button\">Logout</button></a></td>\n" +
     "        <td><a href=\"#\"><img src=\"/SerWise_war/Assets/ProfilePic.jpg\" class=\"profile\"></a></td>\n" +
     "    </tr>\n" +
     "</table>";

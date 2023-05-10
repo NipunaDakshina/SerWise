@@ -38,7 +38,7 @@ public class employeeTable {
             query = String.format(query, where);
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                String temp[] = new String[7];
+                String temp[] = new String[8];
                 temp[0] = resultSet.getString("Employee_Id");
                 temp[1] = resultSet.getString("First_Name");
                 temp[2] = resultSet.getString("Last_Name");
@@ -46,7 +46,7 @@ public class employeeTable {
                 temp[4] = resultSet.getString("Joined_Date");
                 temp[5] = resultSet.getString("Phone_Number");
                 temp[6] = resultSet.getString("Branch_Id");
-                temp[6] = resultSet.getString("Email");
+                temp[7] = resultSet.getString("Email");
                 outArr.add(temp);
             }
         }
