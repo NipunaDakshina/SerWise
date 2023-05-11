@@ -1,13 +1,16 @@
 package com.CS01.SerWise.Services.Appoinment;
 
 import com.CS01.SerWise.Controllers.appoinmentTable;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletsearchAppoinment", value = "/ServletsearchAppoinment")
@@ -50,10 +53,10 @@ public class searchAppoinment extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Appoinment/viewAppoinment.jsp");
                 requestDispatcher.forward(request,response);
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                request.setAttribute("exception",e);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+                dispatcher.forward(request, response);
             }
         }
 

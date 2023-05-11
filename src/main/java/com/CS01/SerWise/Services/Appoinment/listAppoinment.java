@@ -29,7 +29,7 @@ public class listAppoinment extends HttpServlet {
         out.println(date);
         out.println(id);
         try {
-            ArrayList<String[]> results = appoinmentTable.select("*","Branch_Id111="+branch_Id);
+            ArrayList<String[]> results = appoinmentTable.select("*","Branch_Id="+branch_Id);
             int noofrows = 0;
             for (String[] i : results){
                 request.setAttribute("appoinmentId"+noofrows,i[0]);

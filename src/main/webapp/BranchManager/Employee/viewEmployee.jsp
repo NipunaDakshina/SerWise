@@ -29,10 +29,17 @@
     <span class="title">SerWise &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View Branch Employee Details</span>
 </div>
 
+<div class="single-content-div center title">
+    Search By id : &MediumSpace;
+    <form >
+        <input type="text" placeholder="employee name" id="name">
+    </form>
+</div>
+
 
 
 <div class="form-display-table glass">
-    <table>
+    <table id="myTable">
         <tr>
             <th>Employee Id</th>
             <th>First Name</th>
@@ -43,6 +50,7 @@
             <th>Position</th>
 
         </tr>
+        <tbody>
         <%
             Integer attrVal = (Integer) request.getAttribute("noOfRows");
             int noOfRows=attrVal.intValue();
@@ -68,6 +76,7 @@
                 out.println("<tr> <td colspan=\"8\">Not Found!</td></tr>");
             }
         %>
+        </tbody>
     </table>
 </div>
 
@@ -79,5 +88,67 @@
     <div class="center">All Rights Recieved</div>
 </footer>
 <script src="/SerWise_war/BranchManager/BranchManagerHeader.js"></script>
+
+<script>
+    document.getElementById('name').addEventListener('input', searchTable);
+
+    function searchTable() {
+        var input = document.getElementById('name');
+        var filter = input.value.toUpperCase();
+        var table = document.getElementById('myTable');
+        var rows = table.getElementsByTagName('tr');
+
+        // Remove existing "Not Found!" row if present
+        var notFoundRow = table.querySelector('.not-found-row');
+        if (notFoundRow) {
+            notFoundRow.remove();
+        }
+
+        // Start loop from index 1 to exclude the table header row (index 0)
+        var foundMatch = false;
+        for (var i = 1; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var shouldShowRow = false;
+
+            // Check the second column (index 1) in each row for a match
+            var cell = cells[1]; // Get the second cell (index 1)
+            if (cell) {
+                var cellText = cell.textContent || cell.innerText;
+                if (cellText.toUpperCase().indexOf(filter) > -1) {
+                    shouldShowRow = true;
+                    foundMatch = true;
+                }
+            }
+
+            // Check the third column (index 2) in each row for a match
+            cell = cells[2]; // Get the second cell (index 1)
+            if (cell) {
+                var cellText = cell.textContent || cell.innerText;
+                if (cellText.toUpperCase().indexOf(filter) > -1) {
+                    shouldShowRow = true;
+                    foundMatch = true;
+                }
+            }
+
+            // Show or hide the row based on the search result
+            rows[i].style.display = shouldShowRow ? 'table-row' : 'none';
+        }
+
+        // If no matches found, display "Not Found!" row
+        if (!foundMatch) {
+            var tbody = table.querySelector('tbody');
+            var notFoundRow = document.createElement('tr');
+            notFoundRow.className = 'not-found-row';
+            var notFoundCell = document.createElement('td');
+            notFoundCell.colSpan = 8; // Set the colspan to match the number of columns
+            notFoundCell.textContent = 'Not Found!';
+            notFoundRow.appendChild(notFoundCell);
+            tbody.appendChild(notFoundRow);
+        }
+    }
+
+
+</script>
+
 </body>
 </html>
