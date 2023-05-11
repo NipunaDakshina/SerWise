@@ -24,10 +24,10 @@ public class removeAppoinment extends HttpServlet {
             appoinmentTable.delete(id);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ServletlistAppoinment");
             requestDispatcher.forward(request,response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
 
     }

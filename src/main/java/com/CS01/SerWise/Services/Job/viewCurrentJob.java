@@ -72,10 +72,10 @@ public class viewCurrentJob extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SlotLeader/Jobs/currentJob.jsp");
             requestDispatcher.forward(request,response);
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 

@@ -75,10 +75,10 @@ public class viewJobs extends HttpServlet {
             out.println("No of rows ="+noofrows);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SlotLeader/Jobs/viewJobs.jsp");
             requestDispatcher.forward(request,response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 

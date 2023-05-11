@@ -91,7 +91,9 @@ public class ServletemployeeList extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Employee/viewEmployee.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
 
 

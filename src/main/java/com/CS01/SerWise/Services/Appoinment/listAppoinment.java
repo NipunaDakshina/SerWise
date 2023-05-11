@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletlistAppoinment", value = "/ServletlistAppoinment")
@@ -30,7 +29,7 @@ public class listAppoinment extends HttpServlet {
         out.println(date);
         out.println(id);
         try {
-            ArrayList<String[]> results = appoinmentTable.select("*","Branch_Id="+branch_Id);
+            ArrayList<String[]> results = appoinmentTable.select("*","Branch_Id111="+branch_Id);
             int noofrows = 0;
             for (String[] i : results){
                 request.setAttribute("appoinmentId"+noofrows,i[0]);
@@ -47,10 +46,10 @@ public class listAppoinment extends HttpServlet {
             out.println("No of rows ="+noofrows);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Appoinment/viewAppoinment.jsp");
             requestDispatcher.forward(request,response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 

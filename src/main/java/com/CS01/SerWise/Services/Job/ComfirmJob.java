@@ -105,8 +105,10 @@ public class ComfirmJob extends HttpServlet {
             //redirect to the home page
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SlotLeader/Home/home.jsp");
             requestDispatcher.forward(request,response);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

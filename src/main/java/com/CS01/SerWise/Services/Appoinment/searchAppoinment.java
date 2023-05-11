@@ -81,10 +81,10 @@ public class searchAppoinment extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Appoinment/viewAppoinment.jsp");
                 requestDispatcher.forward(request,response);
 
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+            }catch (Exception e) {
+                request.setAttribute("exception",e);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+                dispatcher.forward(request, response);
             }
         }
     }

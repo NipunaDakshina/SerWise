@@ -1,13 +1,16 @@
 package com.CS01.SerWise.Services.Report;
 
 import com.CS01.SerWise.Controllers.jobTable;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletviewPreviousReport", value = "/ServletviewPreviousReport")
@@ -55,10 +58,10 @@ public class viewPreviousReport extends HttpServlet {
 
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/previousMonth.jsp");
             requestDispatcher.forward(request,response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            request.setAttribute("exception",e);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }
