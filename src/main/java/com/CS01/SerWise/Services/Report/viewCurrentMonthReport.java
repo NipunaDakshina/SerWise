@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.YearMonth;
 import java.util.ArrayList;
 
@@ -67,7 +66,7 @@ public class viewCurrentMonthReport extends HttpServlet {
                 request.setAttribute("income",income);
             }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/currentMonth.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/viewReport.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
             request.setAttribute("exception",e);

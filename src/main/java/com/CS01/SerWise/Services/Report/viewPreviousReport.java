@@ -32,6 +32,7 @@ public class viewPreviousReport extends HttpServlet {
         request.setAttribute("branchID",branch_Id);
         request.setAttribute("month",monthYear);
         String appoinmentDone;
+        String appoinmentOngoing=null;
         String income;
         String rank;
 
@@ -56,12 +57,14 @@ public class viewPreviousReport extends HttpServlet {
                 request.setAttribute("income",income);
             }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/previousMonth.jsp");
+            request.setAttribute("ongoingApp",appoinmentOngoing);
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/viewReport.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
             request.setAttribute("exception",e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
-            dispatcher.forward(request, response);
+            dispatcher.forward(request ,response);
         }
     }
 }

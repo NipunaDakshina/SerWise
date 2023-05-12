@@ -1,13 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
   User: Nipuna
-  Date: 4/25/2023
-  Time: 6:16 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%--
-  Created by IntelliJ IDEA.
-  User: Nipuna
   Date: 4/19/2023
   Time: 10:46 AM
   To change this template use File | Settings | File Templates.

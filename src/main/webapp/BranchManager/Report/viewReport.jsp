@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Nipuna
@@ -7,57 +8,100 @@
 --%>
 
 <%@ page import="com.mysql.cj.Session" %>
+<%@ page import="java.time.YearMonth" %>
+<%@ page import="java.time.format.TextStyle" %>
+<%@ page import="java.util.Locale" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/SerWise_war/CSS/content.css">
-    <link rel="stylesheet" href="/SerWise_war/CSS/navigation.css">
-    <link rel="stylesheet" href="/SerWise_war/CSS/footer.css">
-    <link rel="stylesheet" href="/SerWise_war/CSS/backgrount.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/SerWise_war/CSS/content.css">
+  <link rel="stylesheet" href="/SerWise_war/CSS/navigation.css">
+  <link rel="stylesheet" href="/SerWise_war/CSS/footer.css">
+  <link rel="stylesheet" href="/SerWise_war/CSS/backgrount.css">
+  <title>Document</title>
 </head>
 <body>
 
 <header class="navigation"></header>
 
 <div class="single-content-div center title">
-    <span class="title">SerWise &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View Report</span>
+  <span class="title">SerWise &MediumSpace;</span> <span class="subtitle"> - &MediumSpace; View Monthly Report</span>
 </div>
 
-<div class="two-content-div glass">
-    <div>
-        <div class="colomn-content-div">
-            <form action="/SerWise_war/ServletviewCurrentMonthReport">
-                <div>
-                    <span class="title">View Current Month Status</span><br>
-                    <span>current month view report summarizes number of appoinments that are done and
-                    ongoing and Total income of the month</span><br>
-                    <input type="submit" class="button" value="View">
-                </div>
-            </form>
+<div class="single-content-div center title">
+  Search by Month :
+  <form action="/SerWise_war/ServletviewPreviousReport">
+    <input type="month" name="month" required>
+    <input type="submit" value="Find Report" class="button">
+  </form>
+</div>
 
-            <form action="/SerWise_war/BranchManager/Report/findReport.jsp">
-                <div>
-                    <span class="title">View Previous Reports</span><br>
-                    <span>previous month report summarizes number of appoinments that are done and billed and
-                     Total income of that month</span><br>
-                    <input type="submit" class="button" value="View">
-                </div>
-            </form>
-        </div>
-    </div>
+
+
+<br>
+<br>
+<%
+  String branchId=(String) request.getAttribute("branchID");
+  String Month=(String) request.getAttribute("month");
+  String doneAppoinment=(String) request.getAttribute("doneApp");
+  String ongingAppoinment=(String)request.getAttribute("ongoingApp");
+  String income=(String) request.getAttribute("income");
+  //String noOfAppoinment=(String) request.getAttribute("noOfAppoinment");
+  String[] parts = Month.split("-");
+  int year = Integer.parseInt(parts[0]);
+  int month = Integer.parseInt(parts[1]);
+  int monthYear = year * 100 + month;
+  YearMonth yearMonth = YearMonth.of(monthYear / 100, monthYear % 100);
+  String time=yearMonth.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH) + " " + yearMonth.getYear();
+
+%>
+
+
+
+
+<div class="single-content-div title">
+  <div>
+    <span class="title">SerWise Branch - <%=branchId%></span><br>
+    <span class="subtitle"><%=time%></span>
+  </div>
+</div>
+
+<div class="report-table glass">
+  <table>
+    <tr>
+      <td>
+        <span class="subtitle">Appointments Done</span><br>
+        <span class="title"><%=doneAppoinment%></span>
+      </td>
+
+      <%if(ongingAppoinment!=null){ %>
+      <td>
+        <span class="subtitle">Appoinments Ongoing</span><br>
+        <span class="title"><%=ongingAppoinment %></span>
+      </td>
+      <% }%>
+
+    </tr>
+    <tr colspan="2">
+      <td>
+        <span class="subtitle">Total Income</span><br>
+        <span class="title">Rs. <%=income%></span>
+      </td>
+    </tr>
+  </table>
 </div>
 
 <footer class="footer">
-    <div class="center"><img src="/SerWise_war/Assets/SerWise.png" class="logo"></div>
-    <div class="center"><a href="#"> Contact Us </a> &nbsp|
-        &nbsp<a href="#"> About Us </a> &nbsp|
-        &nbsp <a href="#"> Legal Stuff </a></div>
-    <div class="center">All Rights Recieved</div>
+  <div class="center"><img src="/SerWise_war/Assets/SerWise.png" class="logo"></div>
+  <div class="center"><a href="#"> Contact Us </a> &nbsp|
+    &nbsp<a href="#"> About Us </a> &nbsp|
+    &nbsp <a href="#"> Legal Stuff </a></div>
+  <div class="center">All Rights Recieved</div>
 </footer>
 <script src="/SerWise_war/BranchManager/BranchManagerHeader.js"></script>
 </body>
 </html>
+
