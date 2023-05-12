@@ -34,7 +34,7 @@
 <div class="single-content-div center title">
   Search by Month :
   <form action="/SerWise_war/ServletviewPreviousReport">
-    <input type="month" name="month" required>
+    <input type="month" name="month" required id="monthInput" onchange="validateMonth(this)">
     <input type="submit" value="Find Report" class="button">
   </form>
 </div>
@@ -102,6 +102,18 @@
   <div class="center">All Rights Recieved</div>
 </footer>
 <script src="/SerWise_war/BranchManager/BranchManagerHeader.js"></script>
+
+<script>
+  function validateMonth(input) {
+    var selectedMonth = new Date(input.value + '-01');
+    var currentMonth = new Date();
+
+    if (selectedMonth > currentMonth) {
+      alert('Please select a past or current month.');
+      input.value = ''; // Clear the input field
+    }
+  }
+</script>
 </body>
 </html>
 

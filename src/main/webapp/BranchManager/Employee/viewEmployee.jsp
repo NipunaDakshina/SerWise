@@ -30,7 +30,7 @@
 </div>
 
 <div class="single-content-div center title">
-    Search By id : &MediumSpace;
+    Search By Name : &MediumSpace;
     <form >
         <input type="text" placeholder="employee name" id="name">
     </form>
