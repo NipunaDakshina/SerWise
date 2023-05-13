@@ -1,12 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Nipuna
-  Date: 5/11/2023
-  Time: 10:54 AM
-  To change this template use File | Settings | File Templates.
---%>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,35 +10,12 @@
     <title>Document</title>
 </head>
 <body>
-<header class="navigation">
-    <img src="/SerWise_war/Assets/SerWise.png" class="navimg">
-</header>
-
-<div class="single-content-div center title">
-    <span class="title">SerWise &MediumSpace;</span> <span class="subtitle"> - View Errors</span>
-</div>
-
-
-
-
-<div class="form-display-table glass">
-
-    <% Exception exception = (Exception) request.getAttribute("exception"); %>
-    <% if (exception != null) { %>
-    <h4>An error occurred: <%= exception.getMessage() %></h4>
-    <% } %>
-
-
-
-
-</div>
-
-<footer class="footer">
-    <div class="center"><img src="/SerWise_war/Assets/SerWise.png" class="logo"></div>
-    <div class="center"><a href="#"> Contact Us </a> &nbsp|
-        &nbsp<a href="#"> About Us </a> &nbsp|
-        &nbsp <a href="#"> Legal Stuff </a></div>
-    <div class="center">All Rights Recieved</div>
-</footer>
+    <div class="error-div glass">
+        <div><span class="title"> Oops... </span> <span class="subtitle"> seems like you got lost in SerWise </span></div>
+        <div><img src="/SerWise_war/Assets/Error.png" alt="Error Image"></div>
+        <button class="button"> Homepage </button>
+        <span class="subtitle"> This is the error message </span>
+        <span> Please contact your manager if you are seeing this message over and over. </span>
+    </div>
 </body>
 </html>
