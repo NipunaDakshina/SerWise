@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="com.mysql.cj.Session" %>
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +30,8 @@
 </div>
 <%
 String slotId= (String) request.getAttribute("slot"+0);
+    List<String> serviceList = (List<String>) request.getAttribute("serviceList");
+    List<String> itemList = (List<String>) request.getAttribute("itemList");
 %>
 
 <div class="form-display-table glass">
@@ -55,9 +60,32 @@ String slotId= (String) request.getAttribute("slot"+0);
             <td><input type="text" disabled value= <%=request.getAttribute("vehicleId"+0)%>> </td>
         </tr>
         <tr>
-            <td>  Job Status : </td>
-            <td><input type="text" disabled value=<%=request.getAttribute("status"+0)%>> </td>
+            <td>  Date : </td>
+            <td><input type="text" disabled value=<%=request.getAttribute("date"+0)%>> </td>
         </tr>
+        <tr>
+            <td> Service List : </td>
+            <td><ul style="list-style: none;">
+                <%for (String item : serviceList) {
+                %>
+                <li><%=item %></li>
+                <%
+                    } %>
+            </ul>
+            </td>
+        </tr>
+        <tr>
+            <td> Inventory Item List : </td>
+            <td><ul style="list-style: none;">
+                <%for (String item : itemList) {
+                    %>
+                    <li><%=item %></li>
+                <%
+                     } %>
+            </ul>
+            </td>
+        </tr>
+
         <tr>
             <td colspan="2"><input type="submit" value="Confirm" class="button"></td>
         </tr>
@@ -68,7 +96,7 @@ String slotId= (String) request.getAttribute("slot"+0);
                 <td colspan="2">Not Found!</td>
             </tr>
             <%
-            }%>
+             }%>
     </table>
     </form>
 </div>

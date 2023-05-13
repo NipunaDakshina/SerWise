@@ -1,8 +1,6 @@
 package com.CS01.SerWise.Services.Job;
 
 import com.CS01.SerWise.Controllers.jobTable;
-import com.CS01.SerWise.Controllers.slotLeaderTable;
-import com.CS01.SerWise.Controllers.slotTable;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,50 +11,22 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(name = "ServletlistallJobs", value = "/ServletlistallJobs")
 public class viewAllJobs extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //get branch id and employee id related to brnach manager
         HttpSession session=request.getSession();
         int employee_Id=(Integer)session.getAttribute("employeeId");
-        String branch_Id;
-        branch_Id = Integer.toString((Integer) session.getAttribute("branchId"));
-
-
-        String command = request.getParameter("command");
-        String date=request.getParameter("date");
-        String id=request.getParameter("id");
+        String branch_Id= Integer.toString((Integer) session.getAttribute("branchId"));
         PrintWriter out=response.getWriter();
-        out.println(command);
-        out.println(date);
-        out.println(id);
-        String slotId;
-
 
         try {
 
-            // get slot leader id
-
-            String slotLeader_Id=null;
-            ArrayList<String[]> result1= slotLeaderTable.select("Slot_Leader_Id","Employee_Id="+employee_Id);
-            for(String[] i: result1) {
-                out.println(i[0]);
-                slotLeader_Id=i[0];
-            }
-
-            // get slot id
-
-            String slot_Id=null;
-            ArrayList<String[]> result2= slotTable.select("*","Slot_Leader_Id ="+slotLeader_Id);
-            for(String[] i: result2){
-                out.println(i[0]);
-                slot_Id=i[0];
-            }
-
-            //ArrayList<String[]> result2 = jobTable.select("*","Branch_Id="+branch_Id);
+            //get all the jobs related to the branch
             String where="Branch_ID="+branch_Id;
             ArrayList<String[]> result3= jobTable.select("*",where);
             int noofrows = 0;
@@ -69,13 +39,18 @@ public class viewAllJobs extends HttpServlet {
                 request.setAttribute("status"+noofrows,i[5]);
                 request.setAttribute("total"+noofrows,i[6]);
                 request.setAttribute("vehicleId"+noofrows,i[7]);
+                //increase job count
                 noofrows+=1;
             }
+            //set the job count to the request
             request.setAttribute("noOfRows",noofrows);
-            out.println("No of rows ="+noofrows);
+
+            //redirect to the branch manager view all jobs page
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Jobs/viewJobs.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
+
+            //if there is an error, redirect to the error page
             request.setAttribute("exception",e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
             dispatcher.forward(request, response);

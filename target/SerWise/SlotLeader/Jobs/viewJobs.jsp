@@ -89,8 +89,8 @@
 <script src="/SerWise_war/SlotLeader/SlotLeaderHeader.js"></script>
 
 <script>
-    document.getElementById('jobId').addEventListener('input', searchTable);
 
+    document.getElementById('jobId').addEventListener('input', searchTable);
     function searchTable() {
         var input = document.getElementById('jobId');
         var filter = input.value.toUpperCase();

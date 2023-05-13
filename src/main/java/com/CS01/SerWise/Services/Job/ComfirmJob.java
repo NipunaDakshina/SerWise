@@ -1,5 +1,4 @@
 package com.CS01.SerWise.Services.Job;
-
 import com.CS01.SerWise.Controllers.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,36 +16,29 @@ import java.util.ArrayList;
 public class ComfirmJob extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //get branch id and employee id from the session
         HttpSession session=request.getSession();
         int employee_Id=(Integer)session.getAttribute("employeeId");
-        String branch_Id;
-        branch_Id = Integer.toString((Integer) session.getAttribute("branchId"));
+        String branch_Id= Integer.toString((Integer) session.getAttribute("branchId"));
         PrintWriter out=response.getWriter();
+
+        //get ongoing job details from the request
         String jobId=(String)request.getParameter("jobId");
         String slot=(String)request.getParameter("slot");
         String slotLeaderId=(String)request.getParameter("slotLeaderId");
         String vehicleId=(String)request.getParameter("vehicleId");
         String date=(String)request.getParameter("date");
         String clientId = null;
-//        out.println(jobId);
-//        out.println(slot);
-//        out.println(slotLeaderId);
-//        out.println(vehicleId);
-//        out.println("this is confirm job page");
 
         try {
             //change ongoing state to done state in job table
-
             String afterSet1 = "Status='%s'";
             String afterWhere1 = "Job_Id='%s' and Branch_Id='%s'";
-
             afterSet1 = String.format(afterSet1,"Done");
             afterWhere1 = String.format(afterWhere1,jobId,branch_Id);
-
             jobTable.update(afterSet1,afterWhere1);
-            //out.println("OKay");
 
-            //get inventry item details related to job from job_has_inventory_item table
+            //get inventry item details (quantity and batch no) related to job from job_has_inventory_item table
             String where1="Job_ID="+jobId;
             ArrayList<String[]> result1= jobInventoryItemTable.select("*",where1);
             int noofrows=0;
@@ -57,12 +49,9 @@ public class ComfirmJob extends HttpServlet {
                 inventoryItemId=i[1];
                 batchNo=i[2];
                 spendQuantity=Integer.parseInt(i[3]);
-                //out.println(jobId+" "+inventoryItemId+" "+batchNo+" "+quantity);
-
 
                 //reduce that inventory items from branch_has_inventory_item table
-
-                    //get batch no and quantity from branch has inventory table
+                //get batch no and quantity from branch has inventory table
                 int old_quntity=0;
                 int new_quantity=0;
 
@@ -70,13 +59,11 @@ public class ComfirmJob extends HttpServlet {
                 String where2="inventory_item_Inventory_Item_Id="+inventoryItemId+" And batchNo="+batchNo;
                 ArrayList<String[]> result2= inventoryItemBranchTable.select("quantity",where2);
                 for(String[] j: result2) {
-                    //out.println(j[0]);
+
                     old_quntity=Integer.parseInt(j[0]);
                     new_quantity=old_quntity-spendQuantity;
                 }
-//                out.println(spendQuantity);
-//                out.println(old_quntity);
-//                out.println(new_quantity);
+
                 //update quantity with batch no
                 String afterSet2 = "quantity='%s'";
                 String afterWhere2 = "inventory_item_Inventory_Item_Id='%s' and batchNo='%s'";
@@ -106,6 +93,8 @@ public class ComfirmJob extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/SlotLeader/Home/home.jsp");
             requestDispatcher.forward(request,response);
         }catch (Exception e) {
+
+            //if there is an error , redirect to the error page
             request.setAttribute("exception",e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
             dispatcher.forward(request, response);

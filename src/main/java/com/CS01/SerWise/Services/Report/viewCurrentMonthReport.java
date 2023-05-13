@@ -19,34 +19,39 @@ public class viewCurrentMonthReport extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out=response.getWriter();
-        out.println("This is currnet moonth report servlet");
 
+        //get branch id and employee id from the session
         HttpSession session=request.getSession();
-        //int employee_Id=(Integer)session.getAttribute("employeeId");
-        String branch_Id;
-        branch_Id = Integer.toString((Integer) session.getAttribute("branchId"));
+        int employee_Id=(Integer)session.getAttribute("employeeId");
+        String branch_Id= Integer.toString((Integer) session.getAttribute("branchId"));
 
+        //get current month --> format 2023-04
         YearMonth yearMonth = YearMonth.now();
         String monthYear = yearMonth.toString();
         out.println("Month year"+monthYear);
 
+        //set current month to the request
         String month=(String) request.getParameter("month");
         out.println("Month"+month);
 
+        //set current month with year to the request
         request.setAttribute("branchID",branch_Id);
         request.setAttribute("month",monthYear);
+
+        // intialize variable for no of ongoing and done appoinment
         String appoinmentDone;
         String appoinmentOngoing;
+
+        //intialize variable for total income for selected month
         String income;
         String rank;
 
         try {
             //get no of appoinment that is done by branch
-            //<String[]> result1 = appoinmentTable.select("count(Appoinment_Id)","Date Like '"+monthYear+"%'");
             ArrayList<String[]> result1= jobTable.select("count(Job_ID)","Branch_Id="+branch_Id+" and Status='Done' and Date Like '"+monthYear+"%' ");
             for (String [] i:result1){
                 appoinmentDone=i[0];
-                //out.println("No of Appoinment :"+appoinmentDone);
+                //set no of done appoinment
                 request.setAttribute("doneApp",appoinmentDone);
             }
 
@@ -54,7 +59,7 @@ public class viewCurrentMonthReport extends HttpServlet {
             ArrayList<String[]> result2= jobTable.select("count(Job_ID)","Branch_Id="+branch_Id+" and Status='Ongoing' and Date Like '"+monthYear+"%' ");
             for(String [] j:result2){
                 appoinmentOngoing=j[0];
-                //out.println("Ongoing Appoinment : "+appoinmentOngoing);
+                //set no of ongoing appoinment
                 request.setAttribute("ongoingApp",appoinmentOngoing);
             }
 
@@ -62,13 +67,15 @@ public class viewCurrentMonthReport extends HttpServlet {
             ArrayList<String[]> result3=jobTable.select("SUM(Total)","Branch_Id="+branch_Id+" and Status='Billed' and Date Like '"+monthYear+"%'");
             for(String[] k:result3){
                 income=k[0];
-                //out.println("Total Income : "+income);
+                //set total income for current month
                 request.setAttribute("income",income);
             }
 
+            //redirect to the branch manger report view page
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Report/viewReport.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
+            //if there is an error, redirect to the error page
             request.setAttribute("exception",e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
             dispatcher.forward(request, response);

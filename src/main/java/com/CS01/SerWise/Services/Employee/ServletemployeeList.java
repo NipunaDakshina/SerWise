@@ -18,14 +18,14 @@ public class ServletemployeeList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out=response.getWriter();
-        out.println("This is the employee list related to branch");
+
+        //get branch id and employee id related to the branch manager
         HttpSession session=request.getSession();
         int employee_Id=(Integer)session.getAttribute("employeeId");
-        String branch_Id;
-        branch_Id = Integer.toString((Integer) session.getAttribute("branchId"));
+        String branch_Id= Integer.toString((Integer) session.getAttribute("branchId"));
 
         try {
-            //get employee details related to branch excenpting branch manager details
+            //get employee details related to branch excluding branch manager details
             ArrayList<String[]> result1= employeeTable.select("*","Branch_Id="+branch_Id+" and Employee_Id!="+employee_Id);
             int noOfrows=0;
             out.println(result1.size());
@@ -39,6 +39,9 @@ public class ServletemployeeList extends HttpServlet {
                 request.setAttribute("phoneNo"+noOfrows,i[5]);
                 request.setAttribute("branchId"+noOfrows,i[6]);
                 request.setAttribute("email"+noOfrows,i[7]);
+
+                //following task performing to check employee position in the branch
+                //employee is service advisor, slot leader, cashier
 
                 //check employee is mechanic
                 ArrayList<String[]> emp1= mechanicTable.select("*","Employee_Id="+i[0]);
@@ -82,15 +85,20 @@ public class ServletemployeeList extends HttpServlet {
                     position="Security";
                 }
 
+                //set employee position to the request
                 request.setAttribute("position"+noOfrows,position);
-                out.println(position);
+
+                //for get next employee details
                 noOfrows+=1;
             }
+            //set employee count to the request
             request.setAttribute("noOfRows",noOfrows);
 
+            //redirect to the branch manager view employee page
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BranchManager/Employee/viewEmployee.jsp");
             requestDispatcher.forward(request,response);
         } catch (Exception e) {
+            //if there is an error, redirect to the error page
             request.setAttribute("exception",e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Error/error.jsp");
             dispatcher.forward(request, response);
